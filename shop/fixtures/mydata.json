@@ -65,6 +65,32 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+      "action_time": "2022-08-03T15:47:35.001Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "1",
+      "object_repr": "user - 2.00 - 2_waiting_for_payment",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"User\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+      "action_time": "2022-08-03T15:49:32.554Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "1",
+      "object_repr": "user - 3.00",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"User\"]}}]"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -576,7 +602,7 @@
     "model": "shop.payment",
     "pk": 1,
     "fields": {
-      "user": 1,
+      "user": 2,
       "amount": "3.00",
       "time": "2022-08-02T19:16:57.305Z",
       "comment": ""
@@ -586,7 +612,7 @@
     "model": "shop.order",
     "pk": 1,
     "fields": {
-      "user": 1,
+      "user": 2,
       "status": "2_waiting_for_payment",
       "amount": "2.00",
       "creation_time": "2022-08-02T19:17:07.586Z",
