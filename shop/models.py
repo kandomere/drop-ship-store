@@ -11,11 +11,14 @@ from django.utils import timezone
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=255, verbose_name='product_name')
-    code = models.CharField(max_length=255, verbose_name='product_code')
+    name = models.CharField(max_length=255, verbose_name='Название люстры')
+    description = models.TextField(max_length=255, verbose_name='Описание')
+    features = models.TextField(max_length=255, verbose_name='Характеристики')
+    type = models.CharField(max_length=255, verbose_name='Тип')
+    code = models.CharField(max_length=255, verbose_name='Код продукта')
     price = models.DecimalField(max_digits=20, decimal_places=2)
     unit = models.CharField(max_length=255, blank=True, null=True)
-    image_url = models.URLField(blank=True, null=True)
+    image = models.ImageField("Фотографии", upload_to='shop/')
     note = models.TextField(blank=True, null=True)
 
     class Meta:
