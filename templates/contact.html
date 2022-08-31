@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}О нас {% endblock %}
+{% block container %}
+
+    <div class="container mt-5  min-vh-100 justify-content-center">
+    <h2 class="text-center">Наши контакты</h2>
+
+        <div class="row">
+            <div class="col-lg-4 mb-lg-0 mb-4 vh-50 text-center ">
+
+                <a class="btn-floating blue accent-1">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+                <h5>Канаш, ул. Машиностроителей, 40</h5>
+                <div class="row text-center">
+
+                    <div class="col-md-12">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <p>+7 (937) 383-27-77</p>
+                        <p class="mb-md-0">8:00-20:00</p>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="https://wa.me/79373832777" class="btn-floating blue accent-1">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <p>Пишите в WhatSupp</p><br>
+                        <p>или в директ</p>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="https://www.instagram.com/new_shine_kanash/" class="btn-floating blue accent-1">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A564c70065eb6489e4acd86a9c6ccc4842557f592cc849d21f5170dc0b7547b12"
+                        style="border: 0; width: 100%; height: 448px; border: 0;"></iframe>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock container %}
+
+

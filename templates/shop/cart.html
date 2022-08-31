@@ -2,6 +2,53 @@
 {% load static %}
 {% block title %}Корзина {% endblock %}
 {% block container %}
-    <h1>контент</h1>
+
+    <div class="container mt-4 pt-4 min-vh-100">
+        {% if not items %}
+            <h1 class="d-flex justify-content-center mb-4 pt-4">Корзина пуста</h1>
+        {% else %}
+            <h2 class="d-flex justify-content-center mb-4 pt-4">Корзина</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Товар</th>
+                    <th scope="col">Количество</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Общая сумма</th>
+                    <th scope="col">Удалить</th>
+                </tr>
+                </thead>
+                {% for item in items %}
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{ item.product }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.amount }}</td>
+                        {#                    <td><i class="fas fa-trash-alt"></i></td>#}
+                        <td>
+                            <form action="{% url 'cart_delete_item' item.pk %}" method="post">
+                                {% csrf_token %}
+                                <button class="border-0 bg-transparent" type="submit"><i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                {% endfor %}
+
+            </table>
+            <h3 class="d-flex justify-content-end mb-4 pt-4">Общая сумма заказа: {{ cart.amount }}</h3>
+
+            <div class="d-flex justify-content-end">
+            <a href="{% url 'make_order' %}" type="button" class="btn btn-lg btn-primary">Оплатить</a>
+            </div>
+
+
+        {% endif %}
+    </div>
 
 {% endblock container %}

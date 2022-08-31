@@ -2,11 +2,24 @@ from django.shortcuts import render
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'index.html')
+from django.views.generic import ListView
+
+from shop.models import Product, AboutUsPhoto
 
 
-def about(request):
-    return render(request, 'about-us.html')
+class ProductsListViewHomeFour(ListView):
+    model = Product
+    template_name = 'index.html'
+    ordering = ['-pk']
 
+
+class AboutUsImages(ListView):
+    model = AboutUsPhoto
+    template_name = 'about-us.html'
+
+
+
+
+def contact(request):
+    return render(request, 'contact.html')
 

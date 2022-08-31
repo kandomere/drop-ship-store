@@ -9,17 +9,20 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.utils import timezone
 
+class AboutUsPhoto(models.Model):
+    name = models.CharField(max_length=35, verbose_name='Название для фотографии')
+    image = models.ImageField("Фотографии", upload_to='shop/')
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название люстры')
-    description = models.TextField(max_length=255, verbose_name='Описание')
-    features = models.TextField(max_length=255, verbose_name='Характеристики')
+    description = models.TextField(max_length=1000, verbose_name='Описание')
+    features = models.TextField(max_length=1000, verbose_name='Характеристики')
     type = models.CharField(max_length=255, verbose_name='Тип')
-    code = models.CharField(max_length=255, verbose_name='Код продукта')
+    code = models.AutoField(auto_created=True, primary_key=True, verbose_name='ID')
     price = models.DecimalField(max_digits=20, decimal_places=2)
     unit = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField("Фотографии", upload_to='shop/')
-    note = models.TextField(blank=True, null=True)
+    note = models.TextField(blank=True, null=True, verbose_name='Заметки')
 
     class Meta:
         ordering = ['pk']
@@ -135,6 +138,8 @@ def auto_payment_unpaid_orders(user: User):
         order.save()
         Payment.objects.create(user=user,
                                amount=-order.amount)
+
+
 @receiver(post_save, sender=OrderItem)
 def recalculate_order_amount_after_save(sender, instance, **kwargs):
     order = instance.order
@@ -147,6 +152,7 @@ def recalculate_order_amount_after_delete(sender, instance, **kwargs):
     order = instance.order
     order.amount = order.get_amount()
     order.save()
+
 
 @receiver(post_delete, sender=Payment)
 def auto_payment(sender, instance, **kwargs):
